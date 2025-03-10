@@ -14,10 +14,10 @@ const Navbar = () => {
   }
 
   return (
-    <header className="lg:px-16 px-4 bg-white flex flex-wrap items-center py-4 shadow-md">
+    <header className="lg:px-16 px-4 bg-white flex flex-wrap border-b items-center py-2 shadow-md">
       <div className="flex-1 flex justify-between items-center">
         <Link href="/home" className="text-xl">
-          Madni Courses Korangi Town
+          Madani Courses Korangi Town
         </Link>
       </div>
 
@@ -31,7 +31,7 @@ const Navbar = () => {
           <ul className="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
             {NAVBAR_LINKS.map((link, index) => (
               <li key={index}>
-                <Link className="md:p-4 py-3 px-0 block hover:text-indigo-400 flex items-center" href={link.path}>
+                <Link className="md:p-4 py-3 px-0 block hover:text-green-400 flex items-center" href={link.path}>
                   <span className="ml-2">{link.name}</span>
                 </Link>
               </li>
