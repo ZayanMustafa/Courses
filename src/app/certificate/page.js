@@ -78,10 +78,6 @@ export default function CertificateManager() {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <Dropdown
-            options={courseOptions}
-            onSelect={(selectedCourse) => setCourse(selectedCourse)}
-          />
           <Input
             label="Mobile Number"
             type="tel"
@@ -90,6 +86,10 @@ export default function CertificateManager() {
             required={true}
             value={mobileNumber}
             onChange={(e) => setMobileNumber(e.target.value)}
+          />
+          <Dropdown
+            options={courseOptions}
+            onSelect={(selectedCourse) => setCourse(selectedCourse)}
           />
           <Button type="submit">Generate Certificate</Button>
         </form>
