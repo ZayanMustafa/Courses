@@ -32,15 +32,13 @@ export default function CertificateManager() {
             emptyField = '';
         }
     
-        // If any field is empty, show an error message
         if (emptyField) {
           setMessage(`${emptyField} is required!`);
           return;
         }
         setMessage('');
 
-    // Send data to the API route
-    try {
+        try {
       const response = await fetch('/api/saveCertificate', {
         method: 'POST',
         headers: {

@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./component/navbar";
 import { Noto_Kufi_Arabic } from "next/font/google"
+import Footer from "./component/footer";
 
 const notoKufiArabic = Noto_Kufi_Arabic({
   subsets: ["arabic"],
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
         <Navbar/>
         {children}
       </body>
+      <Footer/>
     </html>
   );
 }
