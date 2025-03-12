@@ -6,7 +6,7 @@ import Footer from "./component/footer";
 
 const notoKufiArabic = Noto_Kufi_Arabic({
   subsets: ["arabic"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], // Choose the weights you need
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], 
   display: "swap",
 })
 
@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} select-none screen-fix antialiased`}
         >
-        <Navbar/>
+        <Navbar />
         {children}
       </body>
       <Footer/>

@@ -2,6 +2,7 @@ import { FaFacebook, FaGoogle } from "react-icons/fa";
 import Input from "../component/input";
 import Link from "next/link";
 import Button from "../component/button";
+import signInWithGoogle from "../component/signinwithgoogle";
 
 export default function SignUp() {
   return (
@@ -36,21 +37,10 @@ export default function SignUp() {
             placeholder="••••••••"
             required={true}
           />
-          {/* <button
-            type="submit"
-            className="w-full text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-colors"
-          >
-            Create an account
-          </button> */}
           <Button type="sumbit">Create an account</Button>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              type="button"
-              className="w-full sm:w-auto flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors"
-            >
-              <FaGoogle className="mr-2" />
-              Sign up with Google
-            </button>
+            {/* Google SignIn Component */}
+          <signInWithGoogle/>
             <button
               type="button"
               className="w-full sm:w-auto flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 transition-colors"

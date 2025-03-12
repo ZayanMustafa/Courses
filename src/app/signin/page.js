@@ -1,7 +1,7 @@
 import Input from "../component/input";
 import Link from "next/link";
 
-export default function SignIn() {
+export default async function SignIn() {
   return (
     <section className="flex flex-col items-center justify-center min-h-screen py-6 bg-gray-50">
       <div className="w-full bg-white rounded-lg shadow border border-gray-200 max-w-md p-6 sm:p-8">
