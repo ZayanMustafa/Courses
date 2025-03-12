@@ -37,7 +37,7 @@ export default async function SignIn() {
                   id="remember"
                   aria-describedby="remember"
                   type="checkbox"
-                  className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-green-300"
+                  className="w-4 h-4 text-green-600 border-green-300 rounded focus:ring-green-500"
                 />
               </div>
               <div className="ml-3 text-sm">
