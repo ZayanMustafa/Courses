@@ -3,25 +3,37 @@
 import { useRef } from "react";
 import { FaDownload } from "react-icons/fa";
 import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 export default function Certificate({
   name = "Zayyan Mustafa",
   fatherName = "Aamir",
   course = "ML & AI",
-  date = new Date().toLocaleDateString(), // Use real-time date
+  date = new Date().toLocaleDateString(),
   location = "Korangi District",
 }) {
   const certificateRef = useRef(null);
 
-  // Function to handle downloading the certificate as an image
+  // Function to handle downloading the certificate as a PDF
   const handleDownload = () => {
     if (certificateRef.current) {
-      html2canvas(certificateRef.current).then((canvas) => {
-        const link = document.createElement("a");
-        link.download = `${name}-certificate.jpg`;
-        link.href = canvas.toDataURL("image/jpg");
-        link.click();
-      });
+      html2canvas(certificateRef.current, {
+        scale: 3, 
+        useCORS: true, 
+      })
+        .then((canvas) => {
+          const imgData = canvas.toDataURL("image/jpeg", 1.0);
+          const pdf = new jsPDF("landscape", "mm", "a4");
+          const imgWidth = 297;
+          const imgHeight = (canvas.height * imgWidth) / canvas.width;
+  
+          pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
+          pdf.save(`${name}-certificate.pdf`);
+        })
+        .catch((error) => {
+          console.error("Error generating PDF:", error);
+          alert("Failed to generate PDF. Please try again.");
+        });
     }
   };
 
@@ -42,7 +54,7 @@ export default function Certificate({
         <div className="relative z-10 flex flex-col items-center justify-between h-full p-10">
           {/* Name and Father's Name */}
           <div className="absolute top-[48%] left-1/2 transform -translate-x-1/2 text-center">
-            <p className="text-3xl font-bold text-black">{name}</p>
+            <p className="text-4xl font-bold text-black">{name}</p>
             {/* <p className="text-xl text-black mt-2">Son of {fatherName}</p> */}
           </div>
 
@@ -52,13 +64,13 @@ export default function Certificate({
           </div>
 
           {/* Date */}
-          <div className="absolute top-[60%] left-1/2 transform -translate-x-1/2 text-center">
+          {/* <div className="absolute top-[60%] left-1/2 transform -translate-x-1/2 text-center">
             <p className="text-lg text-black">{date}</p>
-          </div>
+          </div> */}
 
           {/* Location */}
           <div className="absolute top-[70%] left-1/2 transform -translate-x-1/2 text-center">
-            {/* <p className="text-lg text-black">{location}</p> */}
+            <p className="text-lg text-black">{location}</p>
           </div>
         </div>
       </div>

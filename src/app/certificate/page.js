@@ -19,14 +19,9 @@ export default function CertificateManager() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Reset message and hide certificate
-    setMessage('');
     setShowCertificate(false);
-
-    // Validation rules
-
-    // If all fields are valid, show the certificate
     setShowCertificate(true);
+
   };
 
   return (

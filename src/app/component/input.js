@@ -1,3 +1,4 @@
+'use client'
 export default function Input({ label, type, name, id, placeholder, required, value, onChange }) {
   return (
     <div>
