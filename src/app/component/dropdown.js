@@ -1,20 +1,20 @@
-'use client'; 
+'use client';
 
 import { useState } from 'react';
-import { FaChevronDown } from 'react-icons/fa'; 
+import { FaChevronDown } from 'react-icons/fa';
 
 const Dropdown = ({ options, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('Select an option');
 
   const handleSelect = (option) => {
-    setSelectedOption(option); 
-    onSelect(option); 
-    setIsOpen(false); 
+    setSelectedOption(option);
+    onSelect(option);
+    setIsOpen(false);
   };
 
   return (
-    <div className="relative inline-block text-left w-64">
+    <div className="relative inline-block text-left w-full sm:w-64">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full bg-gray-50 border border-gray-300 text-gray-900 py-2 px-4 rounded-lg inline-flex justify-between items-center focus:ring-green-500 focus:border-green-500"
@@ -25,7 +25,7 @@ const Dropdown = ({ options, onSelect }) => {
 
       {/* Dropdown menu */}
       {isOpen && (
-        <div className="absolute z-50 mt-2 w-full rounded-md shadow-lg bg-white border border-gray-300">
+        <div className="absolute z-50 mt-2 w-full sm:w-64 rounded-md shadow-lg bg-white border border-gray-300">
           <div className="py-1 text-gray-900 text-sm" role="menu">
             {options.map((option, index) => (
               <a

@@ -3,7 +3,7 @@ import { FOOTER_CONTENT } from "../constant/footer";
 
 export default function Footer() {
   return (
-    <div className="py-7 border-t bg-dark-500 border-gray-100">
+    <div className="ms-5 py-7 border-t bg-dark-500 border-gray-100">
       <div className="flex items-center justify-center flex-col lg:justify-between lg:flex-row">
         {/* Copyright Section */}
         <span className="text-sm text-gray-500">
