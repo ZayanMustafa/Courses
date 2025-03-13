@@ -68,7 +68,7 @@ export default function Certificate({
             <p className="text-xl font-serif mb-10">This is to Certify That</p>
             
             <div className="w-full border-b-2 border-gray-400 mb-2 relative">
-              <p className="text-3xl font-serif absolute top-[-30px] w-full text-center">
+              <p className="text-3xl font-ansa absolute top-[-30px] w-full text-center">
                 {name} 
                 {/* <br /> */}
                 <span className="gap-2 text-2xl" /> son of {fatherName}
