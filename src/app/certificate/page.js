@@ -1,65 +1,32 @@
-'use client'; 
+'use client';
+
 import { useState } from 'react';
-// import Link from 'next/link';
 import Button from '../component/button';
 import Input from '../component/input';
 import Dropdown from '../component/dropdown';
+import Certificate from '../component/certificate';
 
 export default function CertificateManager() {
   const courseOptions = ['Faizan E Namaz', 'Character Building'];
   const [name, setName] = useState('');
+  const [fatherName, setFatherName] = useState('');
   const [course, setCourse] = useState('');
   const [mobileNumber, setMobileNumber] = useState('');
   const [message, setMessage] = useState('');
+  const [showCertificate, setShowCertificate] = useState(false);
 
-    // Validate input
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-    
-        // Check which field is empty
-        let emptyField = '';
-        switch (true) {
-          case !name:
-            emptyField = 'Participant Name';
-            break;
-          case !course:
-            emptyField = 'Course';
-            break;
-          case !mobileNumber:
-            emptyField = 'Mobile Number';
-            break;
-          default:
-            emptyField = '';
-        }
-    
-        if (emptyField) {
-          setMessage(`${emptyField} is required!`);
-          return;
-        }
-        setMessage('');
+  // Validate input
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-        try {
-      const response = await fetch('/api/saveCertificate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name, course, mobileNumber }),
-      });
+    // Reset message and hide certificate
+    setMessage('');
+    setShowCertificate(false);
 
-      const data = await response.json();
-      if (response.ok) {
-        setMessage(data.message);
-        // Clear form fields
-        setName('');
-        setCourse('');
-        setMobileNumber('');
-      } else {
-        setMessage(data.message || 'Failed to save data');
-      }
-    } catch (error) {
-      setMessage('An error occurred. Please try again.');
-    }
+    // Validation rules
+
+    // If all fields are valid, show the certificate
+    setShowCertificate(true);
   };
 
   return (
@@ -73,28 +40,51 @@ export default function CertificateManager() {
             label="Participant Name"
             type="text"
             name="participantName"
+            id="participantName"
             placeholder="Enter Participant Name"
             required={true}
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(value) => setName(value)} // Pass the value to setName
+          />
+          <Input
+            label="Father's Name"
+            type="text"
+            name="fatherName"
+            id="fatherName"
+            placeholder="Enter Father's Name"
+            required={true}
+            value={fatherName}
+            onChange={(value) => setFatherName(value)} // Pass the value to setFatherName
           />
           <Input
             label="Mobile Number"
             type="tel"
             name="mobileNumber"
+            id="mobileNumber"
             placeholder="Enter Mobile Number"
             required={true}
             value={mobileNumber}
-            onChange={(e) => setMobileNumber(e.target.value)}
+            onChange={(value) => setMobileNumber(value)} 
           />
           <Dropdown
             options={courseOptions}
-            onSelect={(selectedCourse) => setCourse(selectedCourse)}
+            onSelect={(selectedCourse) => setCourse(selectedCourse)} 
           />
           <Button type="submit">Generate Certificate</Button>
         </form>
         {message && <p className="mt-4 w-full text-sm text-center text-red-600">{message}</p>}
       </div>
+
+      {/* Display Certificate */}
+      {showCertificate && (
+        <Certificate
+          name={name}
+          fatherName={fatherName}
+          course={course}
+          date="12-03-2025" // Hardcoded date
+          location="Korangi District" // Hardcoded location
+        />
+      )}
     </section>
   );
 }

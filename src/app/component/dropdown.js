@@ -1,16 +1,16 @@
-'use client'; // Mark this as a client component
+'use client'; 
 
 import { useState } from 'react';
-import { FaChevronDown } from 'react-icons/fa'; // Import the dropdown icon
+import { FaChevronDown } from 'react-icons/fa'; 
 
 const Dropdown = ({ options, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('Select an option');
 
   const handleSelect = (option) => {
-    setSelectedOption(option); // Update the selected option
-    onSelect(option); // Pass the selected option to the parent component
-    setIsOpen(false); // Close the dropdown
+    setSelectedOption(option); 
+    onSelect(option); 
+    setIsOpen(false); 
   };
 
   return (
